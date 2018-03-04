@@ -1,0 +1,17 @@
+# Targets
+
+all:	invertedindex
+
+invertedindex:	invertedindex.o $(USRLIB)
+	$(LINK) $(LINKFLAGS) invertedindex.o $(USRLIB) $(SYSLIB) -o invertedindex
+
+clean:
+	rm *.o invertedindex
+
+# Rules
+
+%.o:%.cpp
+	$(CPP) $(CCFLAGS) -c $<
+
+%.o:%.c
+	$(CC) $(CCFLAGS) -c $<
